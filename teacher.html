@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>منصة مدرستي الذكية - فضاء الأستاذ المتكامل</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 15px; text-align: center; }
+        .header { background-color: #34495e; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header h2 { margin: 0; font-size: 24px; }
+        .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
+        
+        .container { max-width: 850px; margin: 0 auto; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: right; }
+        .card h3 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        
+        label { font-weight: bold; color: #2c3e50; display: block; margin-bottom: 8px; }
+        select, input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box; font-family: inherit; }
+        textarea { resize: vertical; height: 80px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; text-align: right; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; font-size: 14px; }
+        th { background-color: #f8f9fa; color: #34495e; }
+
+        .student-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .student-item:last-child { border-bottom: none; }
+        .student-info { font-weight: bold; color: #333; }
+        .absent-btn { background-color: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .absent-btn.active { background-color: #e74c3c; }
+        
+        .btn-submit { background-color: #2980b9; color: white; border: none; width: 100%; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        .btn-submit:hover { background-color: #1f618d; }
+        .btn-success { background-color: #27ae60; }
+        .btn-success:hover { background-color: #1e7e34; }
+        
+        .info-grid { display: flex; gap: 15px; margin-bottom: 15px; }
+        .info-box { background: #ebf5fb; padding: 15px; border-radius: 8px; flex: 1; text-align: center; border-left: 4px solid #2980b9; }
+        .info-box h4 { margin: 0 0 5px 0; color: #2c3e50; }
+        .info-box p { margin: 0; font-weight: bold; color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>📱 فضاء الأستاذ الموحد - إدارة الجدول والمهام الأكاديمية</h2>
+            <p>مرحباً بك في نظام الإدارة والمتابعة البيداغوجية</p>
+        </div>
+
+        <!-- 1. الجدول اليومي ورقم القاعة -->
+        <div class="card">
+            <h3>⏰ استعمال الزمن والوضعية الحالية</h3>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>الحصة الحالية</h4>
+                    <p>08:00 - 10:00</p>
+                </div>
+                <div class="info-box">
+                    <h4>رقم القاعة المخصصة</h4>
+                    <p>القاعة رقم 14 (مخبر)</p>
+                </div>
+                <div class="info-box">
+                    <h4>الفوج الحالي</h4>
+                    <p>2 تقني رياضي</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. قائمة الأقسام المسندة -->
+        <div class="card">
+            <h3>🏫 الأقسام والمستويات المسندة للتدريس</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المستوى الدراسي</th>
+                        <th>المادة</th>
+                        <th>عدد الحصص أسبوعياً</th>
+                        <th>مجموع التلاميذ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2 علوم تجريبية 1</td>
+                        <td>علوم تكنولوجية</td>
+                        <td>4 ساعات</td>
+                        <td>38 تلميذاً</td>
+                    </tr>
+                    <tr>
+                        <td>2 تقني رياضي</td>
+                        <td>هندسة كهربائية</td>
+                        <td>6 ساعات</td>
+                        <td>32 تلميذاً</td>
+                    </tr>
+                    <tr>
+                        <td>3 ثانوي (BAC)</td>
+                        <td>فيزياء / تكنولوجيا</td>
+                        <td>5 ساعات</td>
+                        <td>40 تلميذاً</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. رصد الغيابات الفورية -->
+        <div class="card">
+            <h3>🚨 الرقابة الرقمية ورصد الغيابات اليومية</h3>
+            <p style="color: #7f8c8d; font-size: 13px; margin: 0 0 15px 0;">اضغط على زر الحالة لتحويل التلميذ إلى غائب، وسيتم إخطار الوالي والإدارة فوراً عند الإرسال.</p>
+            
+            <div class="student-item">
+                <div class="student-info">1. أحمد مرابط</div>
+                <button class="absent-btn" onclick="toggleAbsence(this)">حاضر</button>
+            </div>
+            
+            <div class="student-item">
+                <div class="student-info">2. ياسين بوعلام</div>
+                <button class="absent-btn" onclick="toggleAbsence(this)">حاضر</button>
+            </div>
+            
+            <div class="student-item">
+                <div class="student-info">3. منال طاهري</div>
+                <button class="absent-btn" onclick="toggleAbsence(this)">حاضر</button>
+            </div>
+            
+            <button class="btn-submit" onclick="sendAttendance()">إرسال تقرير الغياب الفوري للإدارة 📤</button>
+        </div>
+
+        <!-- 4. رزنامة الامتحانات -->
+        <div class="card">
+            <h3>📅 رزنامة الامتحانات وجدول الحراسة</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>التوقيت</th>
+                        <th>القسم المستهدف</th>
+                        <th>نوع الامتحان</th>
+                        <th>المكان / القاعة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15 مارس 2026</td>
+                        <td>09:00 - 11:00</td>
+                        <td>3 ثانوي (BAC)</td>
+                        <td>بكالوريا تجريبية</td>
+                        <td>المدرج الرئيسي (حراسة)</td>
+                    </tr>
+                    <tr>
+                        <td>18 مارس 2026</td>
+                        <td>10:00 - 12:00</td>
+                        <td>2 تقني رياضي</td>
+                        <td>اختبار الفصل الثاني</td>
+                        <td>القاعة رقم 14</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. دفتر النصوص والواجبات المدرسية -->
+        <div class="card">
+            <h3>📚 دفتر النصوص الرقمي والواجبات المنزلية</h3>
+            <div style="margin-bottom: 15px;">
+                <label>عنوان المحاضرة / الدرس الحالي:</label>
+                <input type="text" id="lessonTitle" placeholder="مثال: درس الترانزستور BJT في النظام المستمر">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>الواجب المنزلي المطلوب وملاحظات الأستاذ:</label>
+                <textarea id="homeworkText" placeholder="مثال: حل التمرين رقم 4 و 5 صفحة 32 من الكتاب المدرسي."></textarea>
+            </div>
+            <div>
+                <label>آخر أجل لتسليم الواجب المنزلي:</label>
+                <input type="date" id="homeworkDate">
+            </div>
+            <button class="btn-submit btn-success" onclick="saveLessonAndHomework()">نشر الدرس والواجب في فضاء الأولياء 📝</button>
+        </div>
+
+        <!-- 6. التواصل المباشر مع إدارة المؤسسة -->
+        <div class="card">
+            <h3>💬 مركز المراسلات والتواصل مع الإدارة</h3>
+            <div style="margin-bottom: 15px;">
+                <label>نوع الطلب / الإشعار الإداري:</label>
+                <select id="adminTopic">
+                    <option value="تقرير بيداغوجي">إرسال تقرير بيداغوجي (سلوك أو نقص وسائل قاعة)</option>
+                    <option value="طلب رخصة">تقديم طلب رخصة غياب / عطلة مرضية</option>
+                    <option value="طلب وثيقة">طلب وثيقة إدارية (شهادة عمل / كشف راتب)</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>نص الرسالة بالتفصيل:</label>
+                <textarea id="adminMessage" placeholder="اكتب نص طلبك الموجه للمدير أو الأمانة العامة للمؤسسة هنا..."></textarea>
+            </div>
+            <button class="btn-submit" style="background-color: #8e44ad;" onclick="sendMessageToAdmin()">إرسال الرسالة إلى أمانة المؤسسة ✉️</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAbsence(b) {
+            if (b.innerText === "حاضر") {
+                b.innerText = "غائب 🚨";
+                b.classList.add("active");
+            } else {
+                b.innerText = "حاضر";
+                b.classList.remove("active");
+            }
+        }
+
+        function sendAttendance() {
+            alert("تم إرسال قائمة الغيابات بنجاح إلى لوحة تحكم الإدارة، وجاري إرسال إشعارات الـ SMS الآلية لأولياء الأمور.");
+        }
+
+        function saveLessonAndHomework() {
+            var t = document.getElementById("lessonTitle").value;
+            if (t === "") {
+                alert("يرجى كتابة عنوان الدرس أولاً ليتمكن النظام من حفظه في دفتر النصوص.");
+                return;
+            }
+alert("تم تسجيل الدرس بنجاح في دفتر النصوص الرقمي، وتم إرسال تفاصيل الواجب المنزلي إلى فضاء أولياء أمور التلاميذ.");}function sendMessageToAdmin() {var m = document.getElementById("adminMessage").value;if (m === "") {alert("يرجى كتابة نص الرسالة الإدارية قبل الضغط على زر الإرسال.");return;}alert("تم إرسال مراسلتك بنجاح إلى مكتب الإدارة، وسيتم إشعارك فور مراجعة المدير أو الأمانة العامة لطلبك.");}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

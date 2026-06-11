@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>منصة مدرستي الذكية - فضاء الأولياء</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 15px; text-align: center; }
+        .header { background-color: #27ae60; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header h2 { margin: 0; font-size: 24px; }
+        .header p { margin: 5px 0 0 0; opacity: 0.9; font-size: 14px; }
+        
+        .container { max-width: 800px; margin: 0 auto; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: right; }
+        .card h3 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        
+        .alert-box { background-color: #fadbd8; border-right: 5px solid #e74c3c; padding: 15px; border-radius: 6px; margin-bottom: 15px; color: #78281f; font-weight: bold; }
+        .success-box { background-color: #d4efdf; border-right: 5px solid #27ae60; padding: 15px; border-radius: 6px; margin-bottom: 15px; color: #145a32; font-weight: bold; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; text-align: right; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; font-size: 14px; }
+        th { background-color: #f8f9fa; color: #34495e; }
+        
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; color: white; }
+        .badge.danger { background-color: #e74c3c; }
+        .badge.success { background-color: #27ae60; }
+        .badge.warning { background-color: #f39c12; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- رأس الصفحة -->
+        <div class="header">
+            <h2>📱 فضاء الأولياء - متابعة الأبناء اليومية</h2>
+            <p>حساب الولي: مراقبة وتتبع المسار الدراسي عن بعد</p>
+        </div>
+
+        <!-- 1. مركز التنبيهات والإنذارات العاجلة -->
+        <div class="card">
+            <h3>🚨 تنبيهات الرقابة الفورية (اليوم)</h3>
+            <!-- محاكاة لإشعار الغياب السريع الصادر من فضاء الأستاذ -->
+            <div class="alert-box">
+                ⚠️ إشعار غياب: ليكن في علمكم أن ابنكم غائب حالياً في حصة "الهندسة الكهربائية" (توقيت: 10:00 - 12:00). يرجى تبرير الغياب لدى المستشار العام.
+            </div>
+        </div>
+
+        <!-- 2. المتابعة اليومية للدروس والواجبات المنزلية -->
+        <div class="card">
+            <h3>📚 دفتر النصوص والواجبات المنزلية الحالية</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المادة</th>
+                        <th>آخر درس تم تلقيه</th>
+                        <th>الواجب المنزلي المطلوب</th>
+                        <th>آخر أجل للتسليم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>هندسة كهربائية</td>
+                        <td>الترانزستور BJT في النظام المستمر</td>
+                        <td>حل التمرين رقم 4 و 5 صفحة 32 من الكتاب المدرسي.</td>
+                        <td><span class="badge warning">18 جوان 2026</span></td>
+                    </tr>
+                    <tr>
+                        <td>الفيزياء</td>
+                        <td>دارة المقاومة والمكثفة RC</td>
+                        <td>مراجعة تقرير الأعمال التطبيقية (TP) المرفوع على المنصة.</td>
+                        <td><span class="badge success">مكتمل</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. تقارير السلوك والمواظبة -->
+        <div class="card">
+            <h3>👤 السلوك والتقييم البيداغوجي للأساتذة</h3>
+            <div class="success-box">
+                🌟 أستاذ العلوم الطبيعية: مشاركة ممتازة وعمل بطل حقيقي داخل القسم اليوم. واصل!
+            </div>
+            <div class="alert-box" style="background-color: #fef9e7; border-right-color: #f39c12; color: #7e5109;">
+                ⚠️ أستاذ الرياضيات: التلميذ لم يحضر كراس الفروض اليوم، يرجى المتابعة في المنزل.
+            </div>
+        </div>
+
+        <!-- 4. نتائج الفروض والاختبارات الفصلية -->
+        <div class="card">
+            <h3>📊 كشف العلامات الدوري (الفصل الحالي)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المادة الأكاديمية</th>
+                        <th>علامة الفرض</th>
+                        <th>علامة الاختبار</th>
+                        <th>ملاحظة الأستاذ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>هندسة كهربائية</td>
+                        <td>16.50 / 20</td>
+                        <td>15.00 / 20</td>
+                        <td>تلميذ ممتاز ومجتهد</td>
+                    </tr>
+                    <tr>
+                        <td>الفيزياء</td>
+                        <td>14.00 / 20</td>
+                        <td>13.50 / 20</td>
+                        <td>نتائج حسنة ويمكنه تقديم الأفضل</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

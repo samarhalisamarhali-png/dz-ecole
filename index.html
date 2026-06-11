@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>بوابة منصة مدرستي الذكية - دخول موحد</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 90vh; }
+        .login-container { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); max-width: 450px; width: 100%; text-align: center; }
+        .logo { font-size: 50px; margin-bottom: 10px; }
+        h1 { color: #2c3e50; font-size: 24px; margin: 0 0 5px 0; }
+        .subtitle { color: #7f8c8d; font-size: 14px; margin-bottom: 25px; }
+        
+        /* أزرار اختيار الصفة */
+        .role-selector { display: flex; gap: 10px; margin-bottom: 25px; }
+        .role-btn { flex: 1; padding: 12px 5px; border: 2px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s; color: #555; }
+        .role-btn.active { border-color: #2980b9; color: #2980b9; background-color: #ebf5fb; }
+
+        /* نموذج إدخال البيانات */
+        .form-section { display: none; text-align: right; }
+        .form-section.active { display: block; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #2c3e50; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
+        input:focus, select:focus { border-color: #2980b9; outline: none; }
+        
+        .btn-login { background-color: #2980b9; color: white; border: none; width: 100%; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        .btn-login:hover { background-color: #1f618d; }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo">🇩🇿</div>
+        <h1>منصة مدرستي الذكية</h1>
+        <p class="subtitle">نظام الإدارة الرقمية والمتابعة البيداغوجية الموحد</p>
+
+        <!-- اختيار صفة المستخدم -->
+        <label style="text-align: right; display: block;">يرجى تحديد صفة المستخدم:</label>
+        <div class="role-selector">
+            <button class="role-btn active" onclick="selectRole('admin', this)">💼 الإدارة</button>
+            <button class="role-btn" onclick="selectRole('teacher', this)">📱 الأستاذ</button>
+            <button class="role-btn" onclick="selectRole('parent', this)">👥 ولي الأمر</button>
+        </div>
+
+        <!-- 1. نموذج تسجيل دخول الإدارة -->
+        <div id="form-admin" class="form-section active">
+            <div class="form-group">
+                <label>اسم المستخدم السري:</label>
+                <input type="text" id="adminUser" placeholder="اكتب اسم المستخدم (المحاكاة: admin)">
+            </div>
+            <div class="form-group">
+                <label>كلمة المرور الإدارية:</label>
+                <input type="password" id="adminPass" placeholder="اكتب كلمة المرور (المحاكاة: 1234)">
+            </div>
+            <button class="btn-login" onclick="loginAdmin()">دخول لوحة تحكم المدير 🔓</button>
+        </div>
+
+        <!-- 2. نموذج تسجيل دخول الأستاذ -->
+        <div id="form-teacher" class="form-section">
+            <div class="form-group">
+                <label>المعرف الرقمي للأستاذ:</label>
+                <input type="text" id="teacherID" placeholder="مثال: T-2026">
+            </div>
+            <div class="form-group">
+                <label>المادة المدرسة:</label>
+                <select id="teacherSubject">
+                    <option value="علوم تكنولوجية">علوم تكنولوجية وإلكترونيك</option>
+                    <option value="الفيزياء">العلوم الفيزيائية</option>
+                    <option value="الرياضيات">الرياضيات</option>
+                </select>
+            </div>
+            <button class="btn-login" style="background-color: #34495e;" onclick="loginTeacher()">دخول فضاء الأستاذ 🔓</button>
+        </div>
+
+        <!-- 3. نموذج تسجيل دخول ولي الأمر -->
+        <div id="form-parent" class="form-section">
+            <div class="form-group">
+                <label>رقم التسجيل السري للابن:</label>
+                <input type="text" id="childID" placeholder="ادخل الرقم الموجود في بطاقة الـ QR للابن">
+            </div>
+            <div class="form-group">
+                <label>رقم هاتف الوالي المسجل:</label>
+                <input type="text" id="parentPhone" placeholder="05xxxxxxxx أو 06xxxxxxxx">
+            </div>
+            <button class="btn-login" style="background-color: #27ae60;" onclick="loginParent()">دخول فضاء المتابعة للأولياء 🔓</button>
+        </div>
+    </div>
+
+    <script>
+        var currentRole = 'admin';
+
+        // دالة التبديل بين نماذج الدخول حسب الصفة المختارة
+        function selectRole(role, button) {
+            currentRole = role;
+            
+            // إلغاء تفعيل كافة الأزرار وإخفاء النماذج
+            var buttons = document.getElementsByClassName("role-btn");
+            for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove("active"); }
+            var sections = document.getElementsByClassName("form-section");
+            for (var j = 0; j < sections.length; j++) { sections[j].classList.remove("active"); }
+            
+            // تفعيل الاختيار الحالي
+            button.classList.add("active");
+            document.getElementById("form-" + role).classList.add("active");
+        }
+
+        // دوال التوجيه والربط بين ملفات التطبيق المحلية
+        function loginAdmin() {
+            var user = document.getElementById("adminUser").value;
+            var pass = document.getElementById("adminPass").value;
+            if (user === "admin" && pass === "1234") {
+                window.location.href = "dashboard.html";
+            } else {
+                alert("اسم المستخدم أو كلمة المرور غير صحيحة (استخدم: admin و 1234 لمحاكاة الدخول).");
+            }
+        }
+
+        function loginTeacher() {
+            var id = document.getElementById("teacherID").value;
+            if (id === "") {
+                alert("يرجى إدخال المعرف الرقمي للأستاذ أولاً.");
+                return;
+            }
+            window.location.href = "teacher.html";
+        }
+
+        function loginParent() {
+            var cId = document.getElementById("childID").value;
+            var phone = document.getElementById("parentPhone").value;
+            if (cId === "" || phone === "") {
+                alert("يرجى ملء حقول رقم تسجيل الابن ورقم هاتف الوالي لإتمام عملية المتابعة.");
+                return;
+            }
+            window.location.href = "parents.html";
+        }
+    </script>
+
+</body>
+</html>
